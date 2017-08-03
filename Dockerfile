@@ -14,7 +14,8 @@ RUN cd /etc/yum.repos.d && \
     curl -LO http://www.graphviz.org/graphviz-rhel.repo && \
     cd /tmp && \
     curl -LO http://www.graphviz.org/pub/graphviz/stable/redhat/el7Server/x86_64/os/gts-0.7.6-21.20111025.el7.x86_64.rpm && \
-    yum -y install graphviz graphviz-gd gts-0.7.6-21.20111025.el7.x86_64.rpm
+    yum clean all && \
+    yum -y install --enablerepo=graphviz-snapshot graphviz graphviz-gd gts-0.7.6-21.20111025.el7.x86_64.rpm
 
 RUN jupyter notebook --generate-config && \
     ipython profile create
