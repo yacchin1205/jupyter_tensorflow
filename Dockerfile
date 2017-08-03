@@ -17,7 +17,7 @@ RUN cd /etc/yum.repos.d && \
     yum clean all && \
     yum -y install --enablerepo=graphviz-snapshot graphviz graphviz-gd gts-0.7.6-21.20111025.el7.x86_64.rpm
 
-RUN jupyter notebook --generate-config && \
+RUN jupyter notebook --allow-root --generate-config && \
     ipython profile create
 RUN echo "c.NotebookApp.ip = '*'" >>/root/.jupyter/jupyter_notebook_config.py && \
     echo "c.NotebookApp.open_browser = False" >>/root/.jupyter/jupyter_notebook_config.py && \
